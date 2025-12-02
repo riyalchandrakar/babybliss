@@ -1,65 +1,118 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Link from "next/link";
+import { products } from "../data/products";
+import ProductCard from "../components/ProductCard";
+import { motion } from "framer-motion";
+
+export default function HomePage() {
+  const featured = products.slice(0, 3);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <section className="hero">
+        {/* LEFT SECTION (TEXT) */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="hero-main-title">
+            Baby care made{" "}
+            <span className="hero-highlight">simple & adorable.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="hero-text">
+            BabyBliss is a demo mini e-commerce site for baby products,
+            thoughtfully crafted for the DiGiLABS assignment. Fully responsive,
+            PWA-ready, and notification-enabled.
           </p>
+
+          <div className="hero-tags">
+            <span className="hero-tag">PWA Setup ✅</span>
+            <span className="hero-tag">Push Notification Demo 🔔</span>
+            <span className="hero-tag">Mobile-first UI 📱</span>
+          </div>
+
+          <div className="hero-actions">
+            <Link href="/products" className="btn btn-primary">
+              Browse Baby Products
+            </Link>
+            <span className="hero-note">No real checkout • UI demo only</span>
+          </div>
+        </motion.div>
+
+        {/* RIGHT SECTION (CUTE BABY CARD) */}
+        <motion.div
+          className="hero-card"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="hero-baby">🍼</div>
+
+          <div className="hero-mini-row">
+            <div className="hero-pill">
+              <div className="text-sm">Safe for Newborns</div>
+              <div className="text-muted" style={{ fontSize: "0.7rem" }}>
+                Hypoallergenic, soft & verified.
+              </div>
+            </div>
+            <div className="hero-pill">
+              <div className="text-sm">Inspired by FirstCry</div>
+              <div className="text-muted" style={{ fontSize: "0.7rem" }}>
+                Category-based, clean UI.
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-mini-row">
+            <div>
+              <div className="text-sm">Installable as App</div>
+              <div className="text-muted" style={{ fontSize: "0.7rem" }}>
+                Try "Add to Home Screen" in browser.
+              </div>
+            </div>
+            <div>
+              <div className="text-sm">Push Demo</div>
+              <div className="text-muted" style={{ fontSize: "0.7rem" }}>
+                Click "Send Notification" in the navbar.
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* FEATURED PRODUCTS SECTION */}
+      <section className="section">
+        <div className="section-header">
+          <div>
+            <h2 className="section-title">Featured for Tiny Humans</h2>
+            <p className="section-sub">
+              Handpicked baby essentials from clothes to toys.
+            </p>
+          </div>
+          <Link href="/products" className="btn btn-ghost">
+            View all products →
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        {/* Fade-in Grid Animation */}
+        <motion.div
+          className="grid grid-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          {featured.map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </motion.div>
+      </section>
+    </motion.div>
   );
 }
