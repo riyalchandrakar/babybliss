@@ -42,23 +42,6 @@ Features include product listing, cart system, PWA support, push notifications, 
 - Click **Send Notification** to show browser notification  
 - Uses basic Notification API (frontend only)
 
----
-
-## 📁 Project Structure
-
-babybliss/
-│── app/
-│── components/
-│── data/
-│── public/
-│── public/products/
-│── public/icons/
-│── public/sw.js
-│── package.json
-
-
-
----
 
 ## ⚙️ Installation & Running Locally
 
@@ -73,6 +56,6 @@ npm run dev
 
 ## 🧑‍💻 Developer
 
-Riyal Chandrakar
-Frontend / MERN Developer
+Riyal Chandrakar<br>
+Frontend / MERN Developer<br>
 GitHub: **https://github.com/riyalchandrakar**
