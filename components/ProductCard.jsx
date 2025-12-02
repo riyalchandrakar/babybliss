@@ -1,24 +1,29 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "./CartContext";
-import { motion } from "framer-motion";
 
-export default function ProductCard({ product }) {
+function ProductCard({ product }) {
   const { addToCart } = useCart();
 
   return (
-    <motion.div
-      className="card"
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="card">
+      {/* IMAGE */}
       <div className="card-img-wrap">
-        <img src={product.image} alt={product.name} className="card-img" />
+        <Image
+          src={product.image}
+          alt={product.name}
+          className="card-img"
+          width={400}
+          height={300}
+          priority={product.id === "1"} // First image -> Improve LCP
+        />
         {product.badge && <span className="card-chip">{product.badge}</span>}
       </div>
 
+      {/* TITLE + CATEGORY */}
       <div>
         <div className="card-title">{product.name}</div>
         <div className="card-meta">
@@ -26,6 +31,7 @@ export default function ProductCard({ product }) {
         </div>
       </div>
 
+      {/* FOOTER */}
       <div className="card-footer">
         <div className="price">
           ₹{product.price}
@@ -46,6 +52,8 @@ export default function ProductCard({ product }) {
           </Link>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
+
+export default React.memo(ProductCard);

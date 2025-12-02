@@ -3,58 +3,40 @@
 import Link from "next/link";
 import { products } from "../data/products";
 import ProductCard from "../components/ProductCard";
-import { motion } from "framer-motion";
 
 export default function HomePage() {
   const featured = products.slice(0, 3);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div>
       <section className="hero">
-        {/* LEFT SECTION (TEXT) */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div>
           <h1 className="hero-main-title">
             Baby care made{" "}
             <span className="hero-highlight">simple & adorable.</span>
           </h1>
-
           <p className="hero-text">
             BabyBliss is a demo mini e-commerce site for baby products,
             thoughtfully crafted for the DiGiLABS assignment. Fully responsive,
             PWA-ready, and notification-enabled.
           </p>
-
           <div className="hero-tags">
             <span className="hero-tag">PWA Setup ✅</span>
             <span className="hero-tag">Push Notification Demo 🔔</span>
             <span className="hero-tag">Mobile-first UI 📱</span>
           </div>
-
           <div className="hero-actions">
             <Link href="/products" className="btn btn-primary">
               Browse Baby Products
             </Link>
-            <span className="hero-note">No real checkout • UI demo only</span>
+            <span className="hero-note">
+              No real checkout • UI demo only
+            </span>
           </div>
-        </motion.div>
+        </div>
 
-        {/* RIGHT SECTION (CUTE BABY CARD) */}
-        <motion.div
-          className="hero-card"
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="hero-card">
           <div className="hero-baby">🍼</div>
-
           <div className="hero-mini-row">
             <div className="hero-pill">
               <div className="text-sm">Safe for Newborns</div>
@@ -69,7 +51,6 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
           <div className="hero-mini-row">
             <div>
               <div className="text-sm">Installable as App</div>
@@ -84,10 +65,9 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* FEATURED PRODUCTS SECTION */}
       <section className="section">
         <div className="section-header">
           <div>
@@ -100,19 +80,12 @@ export default function HomePage() {
             View all products →
           </Link>
         </div>
-
-        {/* Fade-in Grid Animation */}
-        <motion.div
-          className="grid grid-3"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
+        <div className="grid grid-3">
           {featured.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
-        </motion.div>
+        </div>
       </section>
-    </motion.div>
+    </div>
   );
 }
