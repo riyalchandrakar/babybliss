@@ -1,4 +1,3 @@
-cat << 'EOF' > README.md
 # 🍼 BabyBliss — Mini E-Commerce (PWA + Notifications)  
 **A fully responsive demo baby products store built for the DiGiLABS Internship Assignment.**  
 Features include product listing, cart system, PWA support, push notifications, animations, and mobile-optimized UI.
